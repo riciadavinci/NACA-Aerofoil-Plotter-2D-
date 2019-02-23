@@ -30,7 +30,6 @@ elif(file_format == '.txt'):
 else:
 	print("Coordinate File must be in .csv format only\nExiting the program")
 	sys.exit(1)
-	
 coordinate_file = str(argument)
 
 #Reading Aerofoil coordinates from the csv file 
@@ -96,8 +95,6 @@ plot_file_name = "Plot of NACA" + naca_code + " Aerofoil"
 if not os.path.exists("plots"):
 	os.makedirs("plots")
 plot_file_path = str(os.getcwd()) + "/plots/"
-
-
 plt.axis((x_c_min, x_c_max, y_c_min, y_c_max))
 plt.xlabel("x-axis")
 plt.ylabel("y-axis")
