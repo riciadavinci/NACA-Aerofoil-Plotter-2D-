@@ -21,14 +21,14 @@ if(not os.path.exists(c_f_name)):
 
 # Ensuring that only arguments passed are python script file and coordinate file
 if(len(sys.argv) != 2):
-	print("Usage: python aerofoil_NACA_plotter.py coordinatefile.csv \nFor more clarification, refer Readme.pdf\Exiting the program")
+	print("Usage: python aerofoil_NACA_plotter.py coordinatefile.csv \nFor more clarification, refer the readme file\nExiting the program")
 	sys.exit(1)	
 elif(file_format == '.csv'):
 	pass
 elif(file_format == '.txt'):
 	pass
 else:
-	print("Coordinate File must be in .csv format only\nExiting the program")
+	print("Coordinate File must be in '.csv' or '.txt' format only\nExiting the program")
 	sys.exit(1)
 coordinate_file = str(argument)
 
@@ -49,8 +49,9 @@ x_c_min = np.amin(x) - 0.05
 y_c_max = np.amax(y) + 0.35
 y_c_min = np.amin(y) - 0.35
 
-# Taking aerofoil NACA code
-naca_code = input("Input Aerofoil NACA Code Number:")
+# Taking aerofoil NACA code number
+naca_code = input("Input Aerofoil NACA Code Number:")		#This does not make any difference to the actual working of the code.
+								#It just makes it easier to save plot file name according to entere NACA Code.
 	
 # Adding Angle of attack
 print("The angle of attack lies between 0 deg and 45 deg")
@@ -63,7 +64,7 @@ while(alpha_deg >= 0):
         print("Alpha out of range, The angle of attack lies between 0 deg and 45 deg")
         alpha_deg = float(input("Input the angle of attack (alpha) = "))
 
-# Converting angle of attach from degrees to radian for use in sine and cosine functions
+# Converting angle of attack from degrees to radian for use in sine and cosine functions
 alpha_rad = alpha_deg * np.pi / 180
 
 # Finding Centroid
@@ -78,7 +79,7 @@ y_cent_arr = np.ones(len(y))
 x_cent_arr = x_cent_arr * x_centre
 y_cent_arr = y_cent_arr * y_centre
 
-# Forward Translation (Translating centroid to origin)
+# Forward Translation (Translating the contour such that the centroid moves to origin)
 x_o_temp = x_temp - x_cent_arr
 y_o_temp = y_temp - y_cent_arr
 
@@ -92,7 +93,7 @@ y_rotf = y_rot + y_cent_arr
 
 # Plotting the aerofoil from new x & y arrays
 plot_file_name = "Plot of NACA" + naca_code + " Aerofoil"
-if not os.path.exists("plots"):
+if (not os.path.exists("plots")):
 	os.makedirs("plots")
 plot_file_path = str(os.getcwd()) + "/plots/"
 plt.axis((x_c_min, x_c_max, y_c_min, y_c_max))
