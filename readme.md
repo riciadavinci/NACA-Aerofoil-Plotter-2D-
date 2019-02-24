@@ -18,7 +18,7 @@ ___
 ## Running the script
 To run the script, navigate to the script file directory using any shell of your choice (cmd, shell, bash, etc.)
 
-The python script requires **2 system arguments**, **the script name** and **the coordinate file name**.
+The python script requires **2 system arguments:** **the script name** and **the coordinate file name**.
 
 __Usage :__
 ```
