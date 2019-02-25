@@ -15,9 +15,10 @@ program_name = sys.argv[0]
 argument = sys.argv[1]
 arg_len = len(argument)
 file_format = argument[arg_len-4:]
-c_f_name = str(argument)
-if(not os.path.exists(c_f_name)):
-	print("Such a coordinate file does not exist")
+coordinate_file = str(argument)
+if(not os.path.exists(coordinate_file)):
+	print("Such a coordinate file does not exist \nExiting the program")
+	sys.exit(1)
 
 # Ensuring that only arguments passed are python script file and coordinate file
 if(len(sys.argv) != 2):
@@ -30,7 +31,6 @@ elif(file_format == '.txt'):
 else:
 	print("Coordinate File must be in '.csv' or '.txt' format only\nExiting the program")
 	sys.exit(1)
-coordinate_file = str(argument)
 
 # Reading Aerofoil coordinates from the csv file 
 file_data = np.loadtxt(coordinate_file, dtype = float, delimiter = ',')
@@ -51,7 +51,7 @@ y_c_min = np.amin(y) - 0.35
 
 # Taking aerofoil NACA code number
 naca_code = input("Input Aerofoil NACA Code Number:")		#This does not make any difference to the actual working of the code.
-								#It just makes it easier to save plot file name according to entere NACA Code.
+								#It just makes it easier to save plot file name according to entered NACA Code.
 	
 # Adding Angle of attack
 print("The angle of attack lies between 0 deg and 45 deg")
